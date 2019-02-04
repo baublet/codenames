@@ -5,11 +5,6 @@ import Html exposing (Html, button, div, text)
 import Html.Events exposing (onClick)
 
 
-main =
-    Browser.sandbox { init = init, update = update, view = view }
-
-
-
 -- MODEL
 
 
@@ -52,3 +47,19 @@ view model =
         , div [] [ text (String.fromInt model) ]
         , button [ onClick Increment ] [ text "+" ]
         ]
+
+
+
+-- MAIN
+
+
+main : Program Value Model Msg
+main =
+    Api.application Viewer.decoder
+        { init = init
+        , onUrlChange = ChangedUrl
+        , onUrlRequest = ClickedLink
+        , subscriptions = subscriptions
+        , update = update
+        , view = view
+        }
