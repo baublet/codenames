@@ -1,6 +1,5 @@
 module Main exposing (..)
 
-import Browser
 import Html exposing (Html, button, div, text)
 import Html.Events exposing (onClick)
 
@@ -12,8 +11,8 @@ type alias Model =
     Int
 
 
-init : Model
-init =
+model : Model
+model =
     0
 
 
@@ -42,24 +41,13 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ button [ onClick Decrement ] [ text "-" ]
-        , div [] [ text (String.fromInt model) ]
-        , button [ onClick Increment ] [ text "+" ]
-        ]
+    text "Hello world!"
 
 
 
 -- MAIN
 
 
-main : Program Value Model Msg
+main : Program Never Model Msg
 main =
-    Api.application Viewer.decoder
-        { init = init
-        , onUrlChange = ChangedUrl
-        , onUrlRequest = ClickedLink
-        , subscriptions = subscriptions
-        , update = update
-        , view = view
-        }
+    Html.beginnerProgram { model = model, view = view, update = update }
