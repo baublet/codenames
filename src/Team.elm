@@ -3,10 +3,10 @@ module Team exposing (Team, TeamColor)
 import Captain exposing (Captai)
 
 
-type alias Team number =
+type alias Team =
     { color : TeamColor
     , captain : Captain
-    , id : number
+    , id : Int
     }
 
 
