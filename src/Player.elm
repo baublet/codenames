@@ -1,6 +1,8 @@
-module Player exposes(Player)
-import Team from (Team)
+module Player exposing (Player)
 
-type alias Player = {
-    team: Team
-}
+import Team exposing (Team)
+
+
+type alias Player =
+    { team : Team
+    }
